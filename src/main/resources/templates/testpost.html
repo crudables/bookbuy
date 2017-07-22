@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Test Post</title>
+</head>
+<body>
+<div>
+<form method="post" th:action="@{/post}" th:object="${postForm}">
+<textarea rows="4" cols="40" th:field="*{post}"></textarea>
+<button type="submit">Post</button>
+</form>
+</div>
+</body>
+</html>

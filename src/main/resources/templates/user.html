@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-securit">
+
+<head th:replace="layout :: site-head">
+<title th:text="${user.username}"></title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" ></header>
+
+<div class="container=">
+<div>
+<p> <a th:href="@{/upload}"> <img src="img" alt="Profile pic"></img> </a></p>
+<p th:text="${user.firstName}"></p>
+</div>
+</div>
+</body>
+</html>

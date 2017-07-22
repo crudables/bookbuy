@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-securit">
+<head th:fragment="site-head">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Bootstrap -->
+    
+<script type="application/x-javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+<script type="application/javascript"  src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<script type="application/javascript"  src="../public/js/bookbuy-scripts.js" th:src="@{/js/bookbuy-scripts.js}"></script>
+<link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"  th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+<link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}" />
+<link rel="icon" href="../public/img/favicon.ico" th:href="@{/img/favicon.ico}" />
+<meta th:include="this :: head" th:remove="tag"/>
+</head>
+<body>
+<header th:fragment="site-header">
+
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container-fluid">
+<div class="navbar-header">
+<a href="index.html" th:href="@{/}" class="nav-brander"><img src="../public/img/site-logo.png" th:src="@{/img/site-logo.png}" /></a>
+</div>
+  <ul class="nav navbar-nav navbar-right">
+<li class="active"><a href="index.html" th:href="@{/}">Home</a></li>
+<li sec:authorize=" !isAuthenticated()" ><a href="login.html" th:href="@{/login}">login</a></li>
+<li sec:authorize="isAuthenticated()" ><div id="logged-in-info" > <span>Hello, <span sec:authentication="name"></span></span>
+<form method="post" th:action="@{/users/logout}">
+<input type="submit" value="logout" class="nav-btn"/>
+</form>
+</div></li>
+
+</ul>
+</div>
+</nav>
+</header>
+ <footer th:fragment="site-footer">
+</footer></body></html>

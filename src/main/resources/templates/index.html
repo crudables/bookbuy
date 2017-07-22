@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-securit">
+
+<head th:replace="layout :: site-head">
+<title >BookBuy</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" ></header>
+
+<div class="container">
+
+<div class="col-md-2 well">
+<div th:unless="${user == null}">
+<p><a th:href="@{/user}" th:text="${user.firstName} + ${ user.lastName}"></a></p>
+<p><a th:href="@{/user}" th:text="'@'+${user.username}"></a></p>
+</div>
+<div>
+
+</div>
+</div>
+
+<div class="col-md-5">
+<div sec:authorize="isAuthenticated()" > <!-- div to write post -->
+<form th:action="@{/post}" method="post" th:object="${postForm}" class="form-group">
+<textarea rows="4" cols="40" th:field="*{post}" class="form-control" placeholder="Write a message"></textarea>
+<button class="btn btn-default" type="submit">Post</button>
+</form>
+</div>
+<div th:unless="${#lists.isEmpty(allpost)}" > <!-- div to show post -->
+<div th:each="p:${allpost}" class="well"><!-- div to show each post -->
+<p th:text="${p.post}" ></p>
+<div sec:authorize="isAuthenticated()"> <!-- form for comment -->
+<form th:action="@{/posts/comment}" method="post" th:object="${comment}"  class="form-group">
+<input type="text" th:field="*{body}" placeholder="comment..." class="form-control"></input>
+<input type="hidden" th:value="${p.id}" name="someId"></input>
+<button class="btn btn-default">talk</button>
+</form>
+</div>
+<div th:unless="${#lists.isEmpty(p.comments)}" ><!-- comments for post -->
+<div th:each="c:${p.comments}" class="well">
+<p th:text="${c.comment}"></p>
+</div>
+</div>
+</div>
+
+</div>
+
+</div >
+
+</div>
+
+
+
+</body>
+
+</html>

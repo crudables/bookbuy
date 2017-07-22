@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-securit">
+
+<head th:replace="layout :: site-head">
+<title >BookBuy</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" ></header>
+
+<div class="container"></div>
+<p>Upload an image</p>
+<form method="post" enctype="multipart/form-data" th:action="@{/profile_up}">
+<p><input type="file" name="file"></input><input type="submit"></input> </p>
+</form>
+</body>
+</html>

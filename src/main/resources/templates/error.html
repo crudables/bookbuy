@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title th:text="${post.title}">View Post</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" />
+
+<main id="posts">
+  <p th:text="${error}"></p>
+</main>
+
+<footer th:replace="layout :: site-footer" />
+
+</body>
+
+</html>
