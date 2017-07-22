@@ -11,7 +11,7 @@
 
 <div class="container=">
 <div>
-<p> <a th:href="@{/upload}"> <img src="img" alt="Profile pic"></img> </a></p>
+<p> <a th:href="@{/upload}"> <img th:src="${user.profilePic}" alt="Profile pic"/> </a></p>
 <p th:text="${user.firstName}"></p>
 </div>
 </div>

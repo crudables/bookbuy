@@ -18,9 +18,10 @@ import java.util.stream.Stream;
 public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;
-
+    StorageProperties properties;
     @Autowired
     public FileSystemStorageService(StorageProperties properties) {
+    	this.properties = properties;
         this.rootLocation = Paths.get(properties.getLocation());
     }
 

@@ -30,6 +30,9 @@ public class FileUploadController {
     private final StorageService storageService;
     @Autowired
     private final  UserService userService;
+    
+    @Autowired
+    StorageProperties prop;
     @Autowired
     private FileUtils ft;
     private static Logger logger = LoggerFactory.getLogger(FileUploadController.class);
@@ -73,10 +76,10 @@ public class FileUploadController {
     	String ext = ft.getFileExtension(file.getOriginalFilename());
     	String fileName = String.valueOf(instant)+"."+ext;
     	
-    	logger.info("saved filename is "+fileName+" "+ext);
+    	logger.info("saved filename is "+fileName);
         storageService.store(file,fileName);
         
-        user.setProfilePic(fileName);
+        user.setProfilePic(prop.getLocation()+"/"+ fileName);
         logger.info(user.getProfilePic()+"random number ");
         userService.saveOrUpdate(user);
         redirectAttributes.addFlashAttribute("message",
