@@ -5,4 +5,4 @@
  * @author ables
  *
  */
-package com.ables.bookbuy.fileUpload;
+package com.ables.bookbuy.servlets;

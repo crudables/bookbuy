@@ -10,9 +10,11 @@
 <header th:replace="layout :: site-header" ></header>
 
 <div class="container=">
-<div>
-<p> <a th:href="@{/upload}"> <img th:src="${user.profilePic}" alt="Profile pic"/> </a></p>
-<p th:text="${user.firstName}"></p>
+<div class="row text-center">
+<p> <a th:href="@{/upload}"> <img th:src="@{/image(client=${user.username},pin=${user.profilePic})}" alt="Profile pic" class="img-fluid center-block" /> </a></p>
+<p th:text="${user.fullName}"></p>
+<p th:text="${user.email}"> </p>
+<p th:text="${user.username}"></p>
 </div>
 </div>
 </body>
